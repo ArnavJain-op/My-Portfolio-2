@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-900 text-white h-screen flex items-center justify-center">
+    
+    <!-- Custom cursor styles -->
+    <style>
+        /* Hide the default cursor */
+        body {
+            cursor: none;
+        }
+
+        /* Custom cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #00d1a0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: all 0.2s ease;
+            z-index: 9999;
+        }
+
+        /* Enlarged and gray cursor when hovering over specific links */
+        .hover-target:hover ~ .cursor {
+            width: 60px;
+            height: 60px;
+            background-color: #d3d3d3;
+        }
+
+        .flex {
+            align-items: center;
+        }
+
+        /* Text rotation animation */
+        @keyframes rotate {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .text-rotation {
+            white-space: nowrap;
+            animation: rotate 15s linear infinite;
+        }
+
+        /* Hamburger button lines */
+        .hamburger-line {
+            width: 35px;
+            height: 3px;
+            background-color: #00d1a0;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Cross effect for hamburger */
+        .menu-active .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-active .line2 {
+            opacity: 0;
+        }
+
+        .menu-active .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    </style>
+</head>
+
+<body class="bg-blue-900 text-white h-screen relative overflow-x-hidden">
+    <!-- Custom Cursor -->
+    <div id="cursor" class="cursor"></div>
+
+    <!-- Navigation Bar -->
+    <div class="absolute top-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-blue-900">
+        <div class="text-white text-2xl font-bold">MY Portfolio</div>
+
+        <!-- Hamburger Button -->
+        <div id="hamburger" class="cursor-pointer z-50" onclick="toggleMenu()">
+            <div class="hamburger-line line1"></div>
+            <div class="hamburger-line line2"></div>
+            <div class="hamburger-line line3"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="menu" class="fixed inset-0 bg-blue-900 text-white transform translate-x-full transition-transform duration-300 z-40">
+        <ul class="flex flex-col items-center justify-center space-y-6 text-2xl h-full">
+            <li><a href="index.html" class="hover:text-purple-500">Home</a></li>
+            <li><a href="projects.html" class="hover:text-purple-500">Capabilities</a></li>
+            <li><a href="#contact" class="hover:text-purple-500">Projects</a></li>
+            <li><a href="#contact" class="hover:text-purple-500">About</a></li>
+            <li><a href="work.html" class="hover:text-purple-500">Contact Me</a></li>
+        </ul>
+    </div>
+
+    <div class="w-full max-w-md bg-gray-900 bg-opacity-80 p-6 rounded-lg">
+        <h1 class="text-3xl font-bold text-center mb-6">Send a Message</h1>
+        <form id="contact-form" action="/send-message" method="POST" class="space-y-6">
+            <div class="relative">
+                <label for="name" class="block text-sm font-medium text-white">Name</label>
+                <input type="text" id="name" name="name" class="w-full p-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Your Name" required>
+            </div>
+            <div class="relative">
+                <label for="email" class="block text-sm font-medium text-white">Email</label>
+                <input type="email" id="email" name="email" class="w-full p-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Your Email" required>
+            </div>
+            <div class="relative">
+                <label for="message" class="block text-sm font-medium text-white">Message</label>
+                <textarea id="message" name="message" class="w-full p-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-400 transition duration-300">Send Message</button>
+        </form>
+        <div id="popup" class="hidden mt-4 text-center p-3 bg-green-500 text-white rounded-lg">
+            Your message has been sent!
+        </div>
+    </div>
+    
+    
+    <!-- JavaScript for Custom Cursor and Menu Toggle -->
+    <script>
+        // Custom cursor movement
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Toggle menu on click
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const hamburger = document.getElementById('hamburger');
+
+            if (!menu.classList.contains('menu-open')) {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                hamburger.classList.add('menu-active');
+                menu.classList.add('menu-open');
+            } else {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                hamburger.classList.remove('menu-active');
+                menu.classList.remove('menu-open');
+            }
+        }
+    </script>
+
+    <!-- Additional Styles -->
+    <style>
+        /* Hamburger button lines */
+        .hamburger-line {
+            width: 35px;
+            height: 3px;
+            background-color: #00d1a0;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Cross effect for hamburger */
+        .menu-active .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-active .line2 {
+            opacity: 0;
+        }
+
+        .menu-active .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Text rotation animation */
+        @keyframes rotate {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .text-rotation {
+            white-space: nowrap;
+            animation: rotate 15s linear infinite; /* Faster rotation for better impact */
+        }
+    </style>
+</body>
+</html>

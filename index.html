@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- Custom cursor styles -->
+    <style>
+        /* Hide the default cursor */
+        body {
+            cursor: none;
+        }
+
+        /* Custom cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #00d1a0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: all 0.2s ease;
+            z-index: 9999;
+        }
+
+        /* Enlarged and gray cursor when hovering over specific links */
+        .hover-target:hover ~ .cursor {
+            width: 60px;
+            height: 60px;
+            background-color: #d3d3d3;
+        }
+
+        .flex {
+            align-items: center;
+        }
+
+        /* Text rotation animation */
+        @keyframes rotate {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .text-rotation {
+            white-space: nowrap;
+            animation: rotate 15s linear infinite;
+        }
+
+        /* Hamburger button lines */
+        .hamburger-line {
+            width: 35px;
+            height: 3px;
+            background-color: #00d1a0;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Cross effect for hamburger */
+        .menu-active .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-active .line2 {
+            opacity: 0;
+        }
+
+        .menu-active .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    </style>
+</head>
+
+<body class="bg-blue-900 text-white h-screen relative overflow-x-hidden">
+    <!-- Custom Cursor -->
+    <div id="cursor" class="cursor"></div>
+
+    <!-- Navigation Bar -->
+    <div class="absolute top-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-blue-900">
+        <div class="text-white text-2xl font-bold">MY Portfolio</div>
+
+        <!-- Hamburger Button -->
+        <div id="hamburger" class="cursor-pointer z-50" onclick="toggleMenu()">
+            <div class="hamburger-line line1"></div>
+            <div class="hamburger-line line2"></div>
+            <div class="hamburger-line line3"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="menu" class="fixed inset-0 bg-blue-900 text-white transform translate-x-full transition-transform duration-300 z-40">
+        <ul class="flex flex-col items-center justify-center space-y-6 text-2xl h-full">
+            <li><a href="#about" class="hover:text-purple-500">Home</a></li>
+           
+            <li><a href="work.html" class="hover:text-purple-500">Contact Me</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content with Dark Blue Background -->
+    <div class="text-white flex items-center justify-between h-auto px-6 text-left">
+        <!-- Left Section: Main Heading -->
+        <div class="flex-1 mt-56">
+            <div class="text-8xl font-bold leading-tight">
+                Discover the next stage <br> of a <span class="underline decoration-green-400">Developer's story</span>
+            </div>
+        </div>
+
+        <!-- Right Section: Subtext -->
+        <div class="text-right flex-1 mr-15">
+            <p class="text-3xl mt-64">
+                Digital consulting for websites, <br>
+                laying the framework to accelerate <br>
+                your growth to new heights.
+            </p>
+        </div>
+    </div>
+
+    <!-- Rotating Text Banner with Web Development Skills -->
+    <div class="relative overflow-hidden h-16 text-purple-100 flex items-center justify-center bg-blue-900 mt-32">
+        <div class="text-rotation flex space-x-8">
+            <span class="text-xl">HTML & CSS Mastery</span>
+            <span class="text-xl">JavaScript Expertise</span>
+            <span class="text-xl">React & Vue.js</span>
+            <span class="text-xl">Responsive Design</span>
+            <span class="text-xl">Backend Development</span>
+            <span class="text-xl">Database Management</span>
+            <span class="text-xl">Version Control</span>
+            <span class="text-xl">SEO Optimization</span>
+            <span class="text-xl">API Integration</span>
+        </div>
+    </div>
+
+    <!-- Capabilities Section and other content -->
+
+    <!-- JavaScript for Custom Cursor and Menu Toggle -->
+    <script>
+        // Custom cursor movement
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Toggle menu on click
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const hamburger = document.getElementById('hamburger');
+
+            menu.classList.toggle('translate-x-full');
+            menu.classList.toggle('translate-x-0');
+            hamburger.classList.toggle('menu-active');
+        }
+    </script>
+
+
+    <div class="bg-blue-900 py-12">
+        <!-- Capabilities Heading -->
+        <div class="text-center mb-12 mt-56">
+            <h1 class="text-6xl font-extrabold text-white tracking-wider uppercase" id="capabilities">
+                Capabilities
+            </h1>
+            <p class="text-lg text-purple-400 mt-4">
+                What I bring to the table
+            </p>
+            <div class="flex justify-center mt-6">
+                <div class="w-20 h-1 bg-purple-500"></div>
+            </div>
+        </div>
+
+    <!-- Skills Section -->
+    <div class="max-w-7xl mx-auto py-12 grid grid-cols-1 md:grid-cols-2 gap-8 bg-blue-900 mt-12">
+        <!-- Skill 1 -->
+        <div class="p-8 bg-indigo-900 rounded-md shadow-md">
+            
+            <i class="fab fa-html5" style="color: #E34F26; font-size: 50px;"></i> <i class="fab fa-css3-alt" style="color: #1572B6; font-size: 50px;"></i>
+
+
+            <h2 class="text-2xl font-bold my-2">HTML & CSS Mastery</h2>
+            <p class="text-sm leading-relaxed">
+                Crafting clean, semantic HTML5 and modern, responsive CSS layouts. Bringing designs to life while ensuring cross-browser compatibility and accessibility.
+            </p>
+            <hr class="my-4 border-t border-purple-500">
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="p-8  bg-indigo-900 rounded-md shadow-md">
+            <i class="fab fa-js-square" style="color: #F7DF1E; font-size: 50px;"></i>
+
+            <h2 class="text-2xl font-bold my-2">JavaScript & Frontend Frameworks</h2>
+            <p class="text-sm leading-relaxed">
+                Building interactive, dynamic interfaces using JavaScript, React, or Vue.js. Ensuring smooth user experiences with optimized, modular code.
+            </p>
+            <hr class="my-4 border-t border-purple-500">
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="p-8 bg-indigo-900 rounded-md shadow-md">
+            <i class="fas fa-server" style="color: #4CAF50; font-size: 50px;"></i>
+
+            <h2 class="text-2xl font-bold my-2">Backend Development</h2>
+            <p class="text-sm leading-relaxed">
+                Developing robust backends with Node.js, Express, or Python's Django. Working with databases like MongoDB or PostgreSQL to ensure seamless data management.
+            </p>
+            <hr class="my-4 border-t border-purple-500">
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="p-8 bg-indigo-900 rounded-md shadow-md">
+            <i class="fas fa-cloud" style="color: #00A1F1; font-size: 50px;"></i> <i class="fas fa-tools" style="color: #FF9800; font-size: 50px;"></i>
+
+
+            <h2 class="text-2xl font-bold my-2">Version Control & DevOps</h2>
+            <p class="text-sm leading-relaxed">
+                Experienced with Git, GitHub, and CI/CD pipelines. Deploying applications on platforms like Netlify, Vercel, or Heroku, ensuring smooth continuous delivery.
+            </p>
+            <hr class="my-4 border-t border-purple-500">
+        </div>
+    </div>
+    <section id="projects" class="py-16 bg-gradient-to-br from-blue-900 to-purple-900 text-white mt-32">
+        <div class="container mx-auto px-8 lg:px-20">
+            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-wide">My Projects</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <!-- Project 1 -->
+                <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out relative">
+                    <div class="project-image bg-gray-600 h-64 mb-6">
+                        <img src="photos/Screenshot 2024-09-16 182219.png" class="w-full h-full object-cover" alt="FitFussion Project Image">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-semibold mb-4">FitFussion</h3>
+                        <p class="text-base text-gray-300 mb-6">
+                            AI model that predicts fitness levels based on data. Machine learning for pattern recognition.
+                        </p>
+                        <a href="https://arnavjain-op.github.io/FitFussion/" class="inline-block bg-green-500 hover:bg-green-400 text-blue-900 font-bold py-3 px-6 rounded transition-all duration-300">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Project 2 -->
+                <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out relative">
+                    <div class="project-image bg-gray-600 h-64 mb-6">
+                        <img src="photos/amazon-logo-1024x683.png" class="w-full h-full object-cover" alt="Amazon Page Replica">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-semibold mb-4">Amazon Page</h3>
+                        <p class="text-base text-gray-300 mb-6">
+                            I replicated an AMAZON page, where you could actually buy a PS5 and check out all the latest deals.
+                        </p>
+                        <a href="https://github.com/ArnavJain-op/Amazon-Page-replica" class="inline-block bg-green-500 hover:bg-green-400 text-blue-900 font-bold py-3 px-6 rounded transition-all duration-300">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Project 3 -->
+                <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out relative">
+                    <div class="project-image bg-gray-600 h-64 mb-6">
+                        <img src="photos/images.jpg" class="w-full h-full object-cover" alt="Toronto Zoo Website">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-semibold mb-4">Toronto Zoo</h3>
+                        <p class="text-base text-gray-300 mb-6">
+                            I made a website for Toronto Zoo to promote tourism and showcase their crisis Post-Covid Era.
+                        </p>
+                        <a href="https://github.com/ArnavJain-op/Toronto-Zoo" class="inline-block bg-green-500 hover:bg-green-400 text-blue-900 font-bold py-3 px-6 rounded transition-all duration-300">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Project 4 -->
+                <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out relative">
+                    <div class="project-image bg-gray-600 h-64 mb-6">
+                        <img src="photos/Fun_Facts_about_Astronauts.webp" class="w-full h-full object-cover" alt="SpaceHeck Project Image">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-semibold mb-4">SpaceHeck</h3>
+                        <p class="text-base text-gray-300 mb-6">
+                            Promoting tourism through a comprehensive platform highlighting destinations. It is a replica.
+                        </p>
+                        <a href="https://github.com/ArnavJain-op/Design-Replica" class="inline-block bg-green-500 hover:bg-green-400 text-blue-900 font-bold py-3 px-6 rounded transition-all duration-300">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="flex flex-col lg:flex-row items-center lg:space-x-8 py-12 mt-32">
+        
+        <div class="w-full lg:w-1/2">
+            <img src="photos/DALL·E 2024-09-14 22.04.12 - A modern logo design that represents a web development company, combining elements of DPS Rohini and the name 'Arnav Jain'. The logo should include sl.webp" alt="Your Picture" class="rounded-lg shadow-lg mb-6 lg:mb-0">
+        </div>
+        <div class="w-full lg:w-1/2">
+            <h2 class="text-4xl font-bold mb-4">Who am I?</h2>
+            <p class="text-lg mb-4">
+                I'm a 9th grader studying at DPS Rohini, with a passion for web development and video editing. I love diving into technology, building websites, and bringing creative ideas to life through digital projects.
+            </p>
+            <p class="text-lg mb-4">
+                Though I’m still in school, I’m always looking for new projects and challenges to improve my skills. Whether it's designing websites or editing videos, I'm committed to delivering high-quality work.
+            </p>
+            <p class="text-lg mb-4">
+                I'm open to exciting collaborations and projects, so feel free to reach out!
+            </p>
+            <div class="flex  space-x-4">
+                <a href="https://twitter.com/Arnavj0610" target="_blank" class="text-2xl text-blue-500 hover:text-blue-400">
+                    <i class="ion-social-twitter"></i>
+                  </a>
+                  <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-2xl text-blue-700 hover:text-blue-600">
+                    <i class="ion-social-linkedin"></i>
+                  </a>
+                  <a href="mailto:arnavj0610@gmail.com" target="_blank" class="text-2xl text-red-500 hover:text-red-400 mr-15">
+                    <i class="ion-email"></i>
+                  </a>
+                  
+            </div>
+        </div>
+    </section>
+    <body class="bg-indigo-900 text-white">
+        <!-- Call to Action Section -->
+        <a href="work.html"> <section class="bg-indigo-900 py-16 text-center">
+            <h2 class="text-4xl font-bold">Ready to catalyse your next breakthrough?</h2>
+            <button class="mt-8 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-all duration-300" href="work.html">
+                Work with Me
+            </button>
+        </section> </a>
+    
+        <!-- Footer Section -->
+        <footer class="bg-indigo-900 py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
+                    <!-- Contact Column -->
+                    <div>
+                        <h3 class="font-semibold mb-4">Contact</h3>
+                        <p><a href="mailto:hello@franulovic.com" class="text-purple-300 hover:text-green-500 transition-all duration-300">Arnavj0610@gmail.com</a></p>
+                        <p class="text-gray-400 mt-2">DPS Rohini</p>
+                        <p class="text-gray-400">Currently Available</p>
+                    </div>
+    
+                    <!-- Site Column -->
+                    <div>
+                        <h3 class="font-semibold mb-4">Site</h3>
+                        <ul>
+                            <li><a href="#" class="text-purple-300 hover:text-green-500 transition-all duration-300">Home</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-green-500 transition-all duration-300">About</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-green-500 transition-all duration-300">Capabilities</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-green-500 transition-all duration-300">Blog</a></li>
+                        </ul>
+                    </div>
+    
+                    <!-- Social Column -->
+                    <div>
+                        <h3 class="font-semibold mb-4">Social</h3>
+                        <ul>
+                            <li><a href="#" class="text-purple-300 hover:text-green-500 transition-all duration-300">Twitter</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-green-500 transition-all duration-300">Facebook</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-green-500 transition-all duration-300">LinkedIn</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-green-500 transition-all duration-300">Medium</a></li>
+                        </ul>
+                    </div>
+    
+                    <!-- Newsletter Column -->
+                    <div>
+                        <h3 class="font-semibold mb-4">Newsletter</h3>
+                        <p class="text-gray-400 mb-4">If you like what you’re reading here and want to get a post in your inbox before it’s posted here, subscribe below.</p>
+                        <form action="#" method="POST" class="flex">
+                            <input type="email" placeholder="Email Address" class="px-4 py-2 bg-indigo-800 text-white rounded-l-full focus:outline-none w-full">
+                            <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded-r-full hover:bg-green-600 transition-all duration-300">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+        <!-- Bottom Copyright and Designer Credit -->
+        <div class="bg-indigo-900 py-6 text-center text-gray-400">
+            <p>Designed by <a href="#" class="text-green-500 hover:text-green-600">Arnav Jain</a></p>
+            <p class="mt-2">Copyright 2024 Arnav LTD ..... All Rights Reserved</p>
+        </div>
+    
+    
+    
+    
+    <!-- JavaScript for Custom Cursor and Menu Toggle -->
+    <script>
+        // Custom cursor movement
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Toggle menu on click
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const hamburger = document.getElementById('hamburger');
+
+            if (!menu.classList.contains('menu-open')) {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                hamburger.classList.add('menu-active');
+                menu.classList.add('menu-open');
+            } else {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                hamburger.classList.remove('menu-active');
+                menu.classList.remove('menu-open');
+            }
+        }
+    </script>
+
+    <!-- Additional Styles -->
+    <style>
+        /* Hamburger button lines */
+        .hamburger-line {
+            width: 35px;
+            height: 3px;
+            background-color: #00d1a0;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Cross effect for hamburger */
+        .menu-active .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-active .line2 {
+            opacity: 0;
+        }
+
+        .menu-active .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Text rotation animation */
+        @keyframes rotate {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .text-rotation {
+            white-space: nowrap;
+            animation: rotate 15s linear infinite; /* Faster rotation for better impact */
+        }
+    </style>
+
+</body>
+
+</html>
